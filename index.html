@@ -60,21 +60,10 @@
                     
                     <!-- Right side of header -->
                     <div class="flex items-center space-x-4">
-                        <a href="#login" class="login-link px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors auth-button" aria-label="Login to your account" style="display:none;">
+                        <a href="#login" class="login-link px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors" aria-label="Login to your account">
                             <span class="material-symbols-outlined mr-1 text-base">login</span>
                             Login
                         </a>
-                        <div class="user-menu flex items-center space-x-4" style="display:none;">
-                            <a href="#dashboard" class="dashboard-link px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
-                                <span class="material-symbols-outlined mr-1 text-base">dashboard</span>
-                                Dashboard
-                            </a>
-                            <button id="logoutButton" class="logout-link px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
-                                <span class="material-symbols-outlined mr-1 text-base">logout</span>
-                                Logout
-                            </button>
-                            <span class="user-name text-sm text-slate-600 dark:text-slate-300"></span>
-                        </div>
                     </div>
                 </div>
 
@@ -164,20 +153,10 @@
                     </button>
                 </div>
                 <div class="pt-2 mt-2 border-t border-slate-200 dark:border-slate-700">
-                    <a href="#login" class="mobile-login-link block w-full text-left px-4 py-3 rounded-xl font-medium flex items-center space-x-3 text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-700 auth-button" aria-label="Login to your account" style="display:none;">
+                    <a href="#login" class="mobile-login-link block w-full text-left px-4 py-3 rounded-xl font-medium flex items-center space-x-3 text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-700" aria-label="Login to your account">
                         <span class="material-symbols-outlined" aria-hidden="true">login</span>
                         <span>Login</span>
                     </a>
-                    <div class="mobile-user-menu pt-2 border-t border-slate-200 dark:border-slate-700" style="display:none;">
-                        <a href="#dashboard" class="mobile-dashboard-link block w-full text-left px-4 py-3 rounded-xl font-medium flex items-center space-x-3 text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-700">
-                            <span class="material-symbols-outlined" aria-hidden="true">dashboard</span>
-                            <span>Dashboard</span>
-                        </a>
-                        <button id="mobileLogoutButton" class="mobile-logout-link block w-full text-left px-4 py-3 rounded-xl font-medium flex items-center space-x-3 text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-700" onclick="handleLogout()">
-                            <span class="material-symbols-outlined" aria-hidden="true">logout</span>
-                            <span>Logout</span>
-                        </button>
-                    </div>
                 </div>
             </div>
         </div>
@@ -361,14 +340,14 @@
                     </p>
                 </header>
                 
-                <div class="services-layout grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    <div class="projects-container lg:col-span-1">
+                <div class="services-layout grid grid-cols-1 lg:grid-cols-12 gap-8">
+                    <div class="projects-container lg:col-span-8">
                         <div class="projects-grid grid grid-cols-1 md:grid-cols-2 gap-8" id="projectsGrid">
                             <!-- Projects will be populated by JavaScript -->
                         </div>
                     </div>
                     
-                    <aside class="project-form-sidebar lg:col-span-1">
+                    <aside class="project-form-sidebar lg:col-span-4">
                         <div class="card project-form-card">
                             <h3 class="form-title text-xl font-bold mb-4">Post New Project</h3>
                             <form id="projectForm" class="project-submission-form">
@@ -404,94 +383,6 @@
             </div>
         </section>
 
-        <!-- Login Page -->
-        <section id="login" class="page min-h-screen flex items-center justify-center py-12" aria-labelledby="login-heading">
-            <div class="card p-8 max-w-md w-full mx-4 bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm rounded-2xl border border-slate-200/50 dark:border-slate-700/50">
-                <h2 id="login-heading" class="text-3xl font-bold text-center mb-6 text-slate-900 dark:text-white">Login to Collabthon</h2>
-                <form id="loginForm" class="space-y-6">
-                    <div>
-                        <label for="loginUsername" class="block text-sm font-medium mb-2 text-slate-700 dark:text-slate-300">Username</label>
-                        <input type="text" id="loginUsername" name="username" required class="w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-slate-700 text-slate-900 dark:text-white">
-                    </div>
-                    <div>
-                        <label for="loginPassword" class="block text-sm font-medium mb-2 text-slate-700 dark:text-slate-300">Password</label>
-                        <input type="password" id="loginPassword" name="password" required class="w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-slate-700 text-slate-900 dark:text-white">
-                    </div>
-                    <button type="submit" class="w-full btn btn-primary py-3 text-lg font-semibold">Login</button>
-                </form>
-                <p class="mt-6 text-center text-slate-600 dark:text-slate-400">
-                    Don't have an account? <a href="#register" class="text-primary hover:underline" onclick="showPage('register')">Sign up</a>
-                </p>
-            </div>
-        </section>
-        
-        <!-- Register Page -->
-        <section id="register" class="page min-h-screen flex items-center justify-center py-12" aria-labelledby="register-heading">
-            <div class="card p-8 max-w-md w-full mx-4 bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm rounded-2xl border border-slate-200/50 dark:border-slate-700/50">
-                <h2 id="register-heading" class="text-3xl font-bold text-center mb-6 text-slate-900 dark:text-white">Create Account</h2>
-                <form id="registerForm" class="space-y-6">
-                    <div>
-                        <label for="regUsername" class="block text-sm font-medium mb-2 text-slate-700 dark:text-slate-300">Username</label>
-                        <input type="text" id="regUsername" name="username" required class="w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-slate-700 text-slate-900 dark:text-white">
-                    </div>
-                    <div>
-                        <label for="regEmail" class="block text-sm font-medium mb-2 text-slate-700 dark:text-slate-300">Email</label>
-                        <input type="email" id="regEmail" name="email" required class="w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-slate-700 text-slate-900 dark:text-white">
-                    </div>
-                    <div>
-                        <label for="regPassword" class="block text-sm font-medium mb-2 text-slate-700 dark:text-slate-300">Password</label>
-                        <input type="password" id="regPassword" name="password" required class="w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-slate-700 text-slate-900 dark:text-white">
-                    </div>
-                    <button type="submit" class="w-full btn btn-primary py-3 text-lg font-semibold">Create Account</button>
-                </form>
-                <p class="mt-6 text-center text-slate-600 dark:text-slate-400">
-                    Already have an account? <a href="#login" class="text-primary hover:underline" onclick="showPage('login')">Login</a>
-                </p>
-            </div>
-        </section>
-        
-        <!-- Dashboard Page -->
-        <section id="dashboard" class="page min-h-screen py-12" aria-labelledby="dashboard-heading">
-            <div class="container mx-auto px-4">
-                <header class="dashboard-header text-center mb-12">
-                    <h2 id="dashboard-heading" class="text-4xl font-bold text-slate-900 dark:text-white mb-4">Dashboard</h2>
-                    <p class="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
-                        Welcome back, <span class="user-info font-semibold text-primary" id="currentUser"></span>!
-                    </p>
-                </header>
-                
-                <div class="dashboard-stats grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
-                    <div class="stat-card text-center p-6 bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm rounded-2xl border border-slate-200/50 dark:border-slate-700/50">
-                        <div class="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-1" data-stat="total">0</div>
-                        <div class="text-sm text-slate-600 dark:text-slate-400">Total Projects</div>
-                    </div>
-                    <div class="stat-card text-center p-6 bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm rounded-2xl border border-slate-200/50 dark:border-slate-700/50">
-                        <div class="text-3xl font-bold text-green-600 dark:text-green-400 mb-1" data-stat="open">0</div>
-                        <div class="text-sm text-slate-600 dark:text-slate-400">Open Projects</div>
-                    </div>
-                    <div class="stat-card text-center p-6 bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm rounded-2xl border border-slate-200/50 dark:border-slate-700/50">
-                        <div class="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-1" data-stat="collaborations">0</div>
-                        <div class="text-sm text-slate-600 dark:text-slate-400">Collaborations</div>
-                    </div>
-                    <div class="stat-card text-center p-6 bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm rounded-2xl border border-slate-200/50 dark:border-slate-700/50">
-                        <div class="text-3xl font-bold text-yellow-600 dark:text-yellow-400 mb-1" data-stat="connections">0</div>
-                        <div class="text-sm text-slate-600 dark:text-slate-400">Connections</div>
-                    </div>
-                </div>
-                
-                <div class="dashboard-content grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    <div class="my-projects">
-                        <h3 class="text-2xl font-bold mb-4 text-slate-900 dark:text-white">My Projects</h3>
-                        <div id="myProjectsGrid" class="projects-grid grid grid-cols-1 md:grid-cols-2 gap-6"></div>
-                    </div>
-                    <div class="my-connections">
-                        <h3 class="text-2xl font-bold mb-4 text-slate-900 dark:text-white">My Connections</h3>
-                        <div id="myConnectionsGrid" class="students-grid grid grid-cols-1 gap-6"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
         <!-- About Page -->
         <section id="about" class="page min-h-screen py-12" aria-labelledby="about-heading">
             <div class="container mx-auto px-4">
@@ -777,15 +668,6 @@
         </div>
     </footer>
     
-    <!-- Loading Overlay -->
-    <div id="loadingOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: flex; justify-content: center; align-items: center; z-index: 10000;">
-        <div class="loading-content">
-            <div class="spinner"></div>
-            <p>Loading...</p>
-        </div>
-    </div>
-    
-    <script src="api.js"></script>
-    <script src="integrated.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
