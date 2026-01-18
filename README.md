@@ -1,26 +1,29 @@
-# Collabthon Platform - Complete Student Collaboration Solution
+# Collabthon - College Student Collaboration Platform
 
 ## Overview
 
 The Collabthon Platform is a comprehensive student collaboration platform designed to connect college students for project-based learning, skill sharing, and professional networking. Built with FastAPI and modern web technologies, it offers enterprise-level features with a focus on scalability, security, and user experience.
 
-## Features
+## 🚀 Features
 
 ### Core Features
-- **User Authentication**: JWT-based authentication with refresh tokens
+- **Student Collaboration Matching**: Intelligent algorithm to match students based on skills, interests, and project goals
+- **User Authentication**: JWT-based authentication with refresh tokens and Google OAuth 2.0
 - **Profile Management**: Detailed student profiles with skills, experience, and education
 - **Project Management**: Post, discover, and collaborate on projects
 - **Collaboration System**: Request-based collaboration with messaging
-- **Subscription Plans**: Free, Professional, and Enterprise tiers
+- **Subscription Plans**: Free, Professional, and Enterprise tiers with Stripe integration
+- **Real-time Notifications**: Instant updates on project invitations, messages, and collaboration requests
 
 ### Advanced Features
 - **Google Cloud Integration**: 
-  - Cloud Storage for file uploads
-  - Vision API for image analysis
-  - Maps API for location services
-  - Translate API for multi-language support
-  - Analytics 4 for user behavior tracking
-  - reCAPTCHA for security
+  - Google OAuth 2.0: Secure user authentication with Google accounts
+  - Google reCAPTCHA: Advanced bot protection and security
+  - Google Cloud Storage: Scalable file and media storage
+  - Google Vision API: Image analysis and processing capabilities
+  - Google Maps API: Location-based services and geolocation tracking
+  - Google Translate API: Multi-language support and translation services
+  - Google Analytics 4: Comprehensive user behavior tracking
 - **Advanced Search & Filtering**: Sophisticated search with multiple filters
 - **Real-time Analytics**: User activity tracking and platform insights
 - **Payment Integration**: Stripe for subscription management
@@ -37,22 +40,37 @@ The Collabthon Platform is a comprehensive student collaboration platform design
 - **Animations**: Smooth transitions and micro-interactions
 - **SEO Optimized**: Proper meta tags and structured data
 
-## Tech Stack
+## ☁️ Google Cloud Services Integration
+
+- **Google OAuth 2.0**: Secure user authentication with Google accounts
+- **Google reCAPTCHA**: Advanced bot protection and security
+- **Google Cloud Storage**: Scalable file and media storage
+- **Google Vision API**: Image analysis and processing capabilities
+- **Google Maps API**: Location-based services and geolocation tracking
+- **Google Translate API**: Multi-language support and translation services
+- **Google Analytics 4**: Comprehensive user behavior tracking and analytics
+
+## 💻 Tech Stack
 
 ### Backend
-- **Framework**: FastAPI (Python 3.9+)
+- **Framework**: FastAPI (Python 3.13+)
 - **Database**: MySQL with SQLAlchemy ORM
-- **Authentication**: JWT with refresh tokens
-- **Caching**: Redis (optional)
-- **File Storage**: Google Cloud Storage
-- **Payment Processing**: Stripe
-- **Search**: Built-in with Elasticsearch support (optional)
+- **Authentication**: JWT tokens with secure hashing
+- **Async Processing**: Celery with Redis broker
+- **Caching**: Redis for performance optimization
 
 ### Frontend
-- **HTML5/CSS3/JavaScript ES6+**
-- **Tailwind CSS** for styling
-- **Responsive Design** with mobile-first approach
-- **Progressive Web App** capabilities
+- **Framework**: Vanilla JavaScript (ES6+)
+- **Build Tool**: Vite
+- **Styling**: CSS3 with responsive design
+- **Icons**: Material Icons
+- **Fonts**: Google Fonts
+
+### Infrastructure
+- **Database**: MySQL 8.0+
+- **Cache**: Redis 6.0+
+- **Message Queue**: Celery with Redis backend
+- **Deployment**: Docker-ready configuration
 
 ## Architecture
 
@@ -96,7 +114,7 @@ collabthon-clean/
 
 1. **Clone the repository:**
 ```bash
-git clone https://github.com/your-org/collabthon.git
+git clone https://github.com/rohanshelar991/recurrsion.git
 cd collabthon-backend
 ```
 
@@ -150,34 +168,106 @@ cd collabthon-clean
 python -m http.server 3000
 ```
 
-## API Documentation
+## API Endpoints
 
-The API is documented using FastAPI's automatic documentation. Access it at:
-- Interactive docs: `http://localhost:8000/docs`
-- Alternative docs: `http://localhost:8000/redoc`
+### Authentication
+- `POST /api/v1/auth/login` - User login
+- `POST /api/v1/auth/register` - User registration
+- `POST /api/v1/auth/google` - Google OAuth login
+- `GET /api/v1/auth/me` - Get current user info
+- `POST /api/v1/auth/logout` - User logout
 
-### Key Endpoints
-- **Authentication**: `/api/v1/auth/`
-- **Users**: `/api/v1/users/`
-- **Profiles**: `/api/v1/profiles/`
-- **Projects**: `/api/v1/projects/`
-- **Collaborations**: `/api/v1/collaborations/`
-- **Subscriptions**: `/api/v1/subscriptions/`
-- **Analytics**: `/api/v1/analytics/`
-- **Advanced Search**: `/api/v1/search-advanced/`
-- **Payments**: `/api/v1/payments/`
-- **Admin Panel**: `/api/v1/admin/`
+### Users
+- `GET /api/v1/users/` - Get all users
+- `GET /api/v1/users/{user_id}` - Get specific user
+- `PUT /api/v1/users/{user_id}` - Update user profile
+- `DELETE /api/v1/users/{user_id}` - Delete user
 
-## Security Features
+### Profiles
+- `GET /api/v1/profiles/` - Get all profiles
+- `GET /api/v1/profiles/{user_id}` - Get specific profile
+- `PUT /api/v1/profiles/{user_id}` - Update profile
+- `POST /api/v1/profiles/upload-photo` - Upload profile photo
+
+### Projects
+- `GET /api/v1/projects/` - Get all projects
+- `POST /api/v1/projects/` - Create new project
+- `GET /api/v1/projects/{project_id}` - Get specific project
+- `PUT /api/v1/projects/{project_id}` - Update project
+- `DELETE /api/v1/projects/{project_id}` - Delete project
+
+### Collaborations
+- `POST /api/v1/collaborations/request` - Send collaboration request
+- `PUT /api/v1/collaborations/{request_id}/respond` - Respond to request
+- `GET /api/v1/collaborations/my-requests` - Get my collaboration requests
+- `GET /api/v1/collaborations/my-collaborations` - Get my collaborations
+
+### Subscriptions
+- `GET /api/v1/subscriptions/plans` - Get available plans
+- `POST /api/v1/payments/create-checkout-session` - Create Stripe checkout
+- `GET /api/v1/payments/subscription-status` - Get subscription status
+- `POST /api/v1/payments/upgrade-subscription` - Upgrade subscription
+- `POST /api/v1/payments/cancel-subscription` - Cancel subscription
+
+### Analytics
+- `POST /api/v1/analytics/track-activity` - Track user activity
+- `GET /api/v1/analytics/analytics/user-activity` - Get user activity (admin)
+- `GET /api/v1/analytics/analytics/user-activity/stats` - Get activity stats
+- `POST /api/v1/analytics/location-track` - Track user location
+- `GET /api/v1/analytics/analytics/location-data` - Get location data (admin)
+- `GET /api/v1/analytics/reports` - Get all reports (admin)
+- `POST /api/v1/analytics/reports/generate` - Generate new report
+
+### Notifications
+- `GET /api/v1/notifications/` - Get user notifications
+- `PUT /api/v1/notifications/{notification_id}/read` - Mark notification as read
+- `DELETE /api/v1/notifications/{notification_id}` - Delete notification
+
+### Search
+- `GET /api/v1/search/projects` - Search projects
+- `GET /api/v1/search/users` - Search users
+- `GET /api/v1/search/advanced` - Advanced search with filters
+
+### Utilities
+- `GET /health` - Health check
+- `GET /docs` - API documentation (Swagger UI)
+- `GET /redoc` - API documentation (ReDoc)
+
+## 🔐 Security Features
 
 - **JWT Authentication**: Secure token-based authentication
-- **Password Hashing**: bcrypt with salt
-- **Input Validation**: Pydantic schemas for request validation
-- **Rate Limiting**: Prevents abuse and DDoS attacks
-- **CORS Policy**: Strict origin validation
-- **SQL Injection Prevention**: SQLAlchemy ORM with parameterized queries
-- **XSS Prevention**: Automatic output encoding
-- **CSRF Protection**: Token-based protection
+- **Password Hashing**: bcrypt for secure password storage
+- **Rate Limiting**: Protection against brute force attacks
+- **Input Validation**: Comprehensive validation and sanitization
+- **SQL Injection Prevention**: ORM-based queries with parameterized inputs
+- **XSS Protection**: Content security policies and output encoding
+- **Google reCAPTCHA**: Bot protection on critical endpoints
+- **Secure Headers**: Proper HTTP security headers
+
+## 📊 Analytics and Monitoring
+
+- **User Activity Tracking**: Comprehensive event logging
+- **Geolocation Analytics**: Location-based insights
+- **Engagement Metrics**: Detailed user engagement tracking
+- **Performance Monitoring**: API response time tracking
+- **Error Tracking**: Comprehensive error logging and monitoring
+
+## 🧪 Testing
+
+To run the comprehensive test suite:
+
+```bash
+python comprehensive_test.py
+```
+
+This runs end-to-end tests covering all major functionality including:
+- API health and connectivity
+- Database operations
+- Authentication and authorization
+- Google Cloud services integration
+- Payment gateway functionality
+- Notification system
+- Search capabilities
 
 ## Deployment
 
@@ -214,10 +304,10 @@ pytest tests/
 ## Contributing
 
 1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
 ## Support
 
